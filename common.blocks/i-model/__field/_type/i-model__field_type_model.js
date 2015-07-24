@@ -1,5 +1,8 @@
-;(function(MODEL, $) {
-    MODEL.FIELD.types.model = $.inherit(MODEL.FIELD.types['inner-events-storage'], {
+;(function(BEM) {
+    var MODEL = BEM.MODEL,
+        objects = MODEL._utils.objects;
+
+    MODEL.FIELD.decl({ field: 'model', baseField: 'inner-events-storage' }, {
 
         /**
          * Инициализация поля
@@ -147,7 +150,7 @@
         _getValidationRules: function() {
             var field = this;
 
-            return $.extend(this._commonRules(), {
+            return objects.extend(this._commonRules(), {
                 /**
                  * валидация вложенной модели
                  */
@@ -208,4 +211,4 @@
             return this._value.isEqual(val);
         }
     });
-})(BEM.MODEL, jQuery);
+})(BEM);
